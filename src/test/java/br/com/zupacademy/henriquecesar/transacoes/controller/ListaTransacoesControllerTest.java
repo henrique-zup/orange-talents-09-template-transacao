@@ -34,7 +34,7 @@ import br.com.zupacademy.henriquecesar.transacoes.modelo.Estabelecimento;
 import br.com.zupacademy.henriquecesar.transacoes.modelo.Transacao;
 
 @SpringBootTest
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc(addFilters = false)
 @AutoConfigureDataJpa
 @TestInstance(Lifecycle.PER_CLASS)
 class ListaTransacoesControllerTest {
