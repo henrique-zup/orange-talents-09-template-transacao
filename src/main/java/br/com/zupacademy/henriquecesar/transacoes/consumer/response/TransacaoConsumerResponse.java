@@ -3,6 +3,9 @@ package br.com.zupacademy.henriquecesar.transacoes.consumer.response;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import br.com.zupacademy.henriquecesar.transacoes.modelo.Transacao;
+import br.com.zupacademy.henriquecesar.transacoes.repository.EstabelecimentoRepository;
+
 public class TransacaoConsumerResponse {
 	
 	private String id;
@@ -47,6 +50,14 @@ public class TransacaoConsumerResponse {
 	public String toString() {
 		return "TransacaoConsumerResponse [id=" + id + ", valor=" + valor + ", estabelecimento=" + estabelecimento
 				+ ", cartao=" + cartao + ", efetivadaEm=" + efetivadaEm + "]";
+	}
+
+	public Transacao toModel(EstabelecimentoRepository estabelecimentoRepository) {
+		return new Transacao(id, 
+				valor,
+				estabelecimento.toModel(estabelecimentoRepository), 
+				cartao.toModel(), 
+				efetivadaEm);
 	}
 
 }

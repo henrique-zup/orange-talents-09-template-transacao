@@ -1,5 +1,7 @@
 package br.com.zupacademy.henriquecesar.transacoes.consumer.response;
 
+import br.com.zupacademy.henriquecesar.transacoes.modelo.Cartao;
+
 public class CartaoConsumerResponse {
 
 	private String id;
@@ -24,5 +26,9 @@ public class CartaoConsumerResponse {
 	@Override
 	public String toString() {
 		return "CartaoConsumerResponse [id=" + id + ", email=" + email + "]";
+	}
+
+	public Cartao toModel() {
+		return new Cartao(id, email);
 	}
 }

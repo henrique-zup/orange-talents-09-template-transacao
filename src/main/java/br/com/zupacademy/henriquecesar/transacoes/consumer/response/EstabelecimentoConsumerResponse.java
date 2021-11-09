@@ -1,5 +1,8 @@
 package br.com.zupacademy.henriquecesar.transacoes.consumer.response;
 
+import br.com.zupacademy.henriquecesar.transacoes.modelo.Estabelecimento;
+import br.com.zupacademy.henriquecesar.transacoes.repository.EstabelecimentoRepository;
+
 public class EstabelecimentoConsumerResponse {
 
 	private String nome;
@@ -31,5 +34,11 @@ public class EstabelecimentoConsumerResponse {
 	@Override
 	public String toString() {
 		return "EstabelecimentoConsumerResponse [nome=" + nome + ", cidade=" + cidade + ", endereco=" + endereco + "]";
+	}
+
+	public Estabelecimento toModel(EstabelecimentoRepository repository) {
+		return repository
+				.findByNomeAndCidadeAndEndereco(nome, cidade, endereco)
+				.orElse(new Estabelecimento(nome, cidade, endereco));
 	}
 }
